@@ -1,0 +1,9 @@
+{
+  "imports": {
+    "lit": "https://cdn.skypack.dev/pin/lit@v2.2.3-IwwYkJyh70OoYX9M4m5k/mode=imports,min/optimized/lit.js",
+    "lit/": "https://cdn.skypack.dev/pin/lit@v2.2.3-IwwYkJyh70OoYX9M4m5k/mode=imports,min/optimized/lit/",
+    "lit/directives/": "https://cdn.skypack.dev/pin/lit@v2.2.3-IwwYkJyh70OoYX9M4m5k/mode=imports,min/optimized/lit/directives/",
+    "navigo": "https://cdn.skypack.dev/pin/navigo@v8.11.1-P7FrCxiJCiPJPMdihh6j/mode=imports/optimized/navigo.js"
+  },
+  "scopes": {}
+}
