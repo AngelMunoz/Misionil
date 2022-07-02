@@ -5,7 +5,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Navigo.fs" />
+    <Compile Include="Extensions.fs" />
     <Compile Include="Types.fs" />
+    <Compile Include="RouteHandlers.fs" />
+    <Compile Include="Router.fs" />
     <Compile Include="Home.fs" />
     <Compile Include="App.fs" />
     <Compile Include="Main.fs" />
