@@ -36,7 +36,7 @@ type RouterOptions =
 type Route =
     abstract name: string
     abstract path: string
-    abstract Handler: 'T -> unit
+    abstract handler: 'T -> unit
     abstract hooks: RouterHooks
 
 and RouterHooks =
@@ -53,24 +53,39 @@ and Match =
     abstract data: Option<obj>
     abstract ``params``: Option<obj>
 
+type Match<'Data, 'Params> =
+    inherit Match
+
+    abstract data: 'Data option
+    abstract ``params``: 'Params option
+
+type Route<'Data, 'Params> =
+    inherit Route
+
+    abstract handler: Match<'Data, 'Params> -> unit
+
 
 [<ImportDefault("navigo")>]
-type Navigo(root: string, options: obj) =
+type Navigo(root: string, ?options: obj) =
     member _.destroyed: bool = jsNative
     member _.current: Match array = jsNative
     member _.routes: Route array = jsNative
-    member _.on<'T>(fn: 'T -> unit, ?hooks: RouterHooks) : Navigo = jsNative
+    member _.on<'Data, 'Params>(fn: Match<'Data, 'Params> -> unit, ?hooks: RouterHooks) : Navigo = jsNative
     member _.on(fn: Match -> unit, ?hooks: RouterHooks) : Navigo = jsNative
-    member _.on<'T>(path: string, fn: 'T -> unit, ?hooks: RouterHooks) : Navigo = jsNative
+
+    member _.on<'Data, 'Params>(path: string, fn: Match<'Data, 'Params> -> unit, ?hooks: RouterHooks) : Navigo =
+        jsNative
+
     member _.on(path: string, fn: Match -> unit, ?hooks: RouterHooks) : Navigo = jsNative
     member _.on(map: obj, ?hooks: RouterHooks) : Navigo = jsNative
     member _.off(path: string) : Navigo = jsNative
-    member _.off<'T>(fn: 'T -> unit) : Navigo = jsNative
+    member _.off<'Data, 'Params>(fn: Match<'Data, 'Params> -> unit) : Navigo = jsNative
     member _.navigate(where: string, ?options: NavigateOptions) : unit = jsNative
     member _.navigateByName(name: string, ?data: obj, ?options: NavigateOptions) : unit = jsNative
     member _.resolve(?path: string, ?resolveOptions: ResolveOptions) : U2<bool, Match> = jsNative
     member _.destroy() : unit = jsNative
-    member _.notFound<'T>(handler: 'T -> unit, ?hooks: RouterHooks) : Navigo = jsNative
+    member _.notFound<'Data, 'Params>(handler: Match<'Data, 'Params> -> unit, ?hooks: RouterHooks) : Navigo = jsNative
+    member _.notFound(handler: Match -> unit, ?hooks: RouterHooks) : Navigo = jsNative
     member _.notFound(handler: obj -> unit, ?hooks: RouterHooks) : Navigo = jsNative
     member _.updatePageLinks() : Navigo = jsNative
     member _.link(path: string) : string = jsNative
