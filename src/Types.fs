@@ -1,19 +1,19 @@
-[<AutoOpen>]
-module Extensions
+module Types
 
-open Browser.Types
-open Fable.Core
+open System
 
-[<Emit("new Event($0, $1)")>]
-let createEvent name options : Event = jsNative
+[<RequireQualifiedAccess>]
+type Page =
+    | Root
+    | NewCheck of title: string option
+    | Checks of range: (DateTime * DateTime)
 
-[<Emit("new CustomEvent($0, $1)")>]
-let createCustomEvent name options : CustomEvent<_> = jsNative
+type CheckListParams =
+    abstract startDate: DateTime option
+    abstract endDate: DateTime option
 
+type NewCheckParams =
+    abstract title: string option
 
-module Types =
-
-  [<RequireQualifiedAccess>]
-  type Page =
-    | Home
-    | Notes
+type CheckListArgs = Navigo.Match<obj, CheckListParams>
+type NewCheckArgs = Navigo.Match<obj, NewCheckParams>
