@@ -8,6 +8,7 @@
   "packages": {
     "lit": "https://cdn.skypack.dev/pin/lit@v2.2.3-IwwYkJyh70OoYX9M4m5k/mode=imports,min/optimized/lit.js",
     "lit-html": "https://cdn.skypack.dev/pin/lit-html@v2.2.3-xm7mKfzpHOFeww3lxxRH/mode=imports,min/optimized/lit-html.js",
-    "navigo": "https://cdn.skypack.dev/pin/navigo@v8.11.1-P7FrCxiJCiPJPMdihh6j/mode=imports/optimized/navigo.js"
+    "navigo": "https://cdn.skypack.dev/pin/navigo@v8.11.1-P7FrCxiJCiPJPMdihh6j/mode=imports/optimized/navigo.js",
+    "pouchdb-browser": "https://cdn.skypack.dev/pin/pouchdb-browser@v7.3.0-5d8KaUH9dPNFWfsZ2h5h/mode=imports/optimized/pouchdb-browser.js"
   }
 }
