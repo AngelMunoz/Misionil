@@ -13,3 +13,11 @@ export async function getMissions() {
     ...(record.doc && record.doc),
   }));
 }
+
+export function getMission(_id) {
+  return missions.get(_id);
+}
+
+export async function removeMission(_id, rev) {
+  return missions.remove(doc, rev);
+}

@@ -5,21 +5,14 @@ open Types
 
 let onChecks (args: CheckListArgs) : Page =
     let getDateRange (args: CheckListArgs) =
-        let startDate =
+        let _id =
             args.``params``
-            |> Option.map (fun arg -> arg.startDate)
+            |> Option.map (fun arg -> arg._id)
             |> Option.flatten
-            |> Option.defaultValue DateTime.Now
 
-        let endDate =
-            args.``params``
-            |> Option.map (fun arg -> arg.endDate)
-            |> Option.flatten
-            |> Option.defaultValue DateTime.Now
+        _id
 
-        startDate, endDate
-
-    args |> getDateRange |> Page.Checks
+    args |> getDateRange |> Page.CheckList
 
 
 let onNewCheck (args: NewCheckArgs) : Page =

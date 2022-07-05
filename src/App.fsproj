@@ -9,7 +9,9 @@
     <Compile Include="Types.fs" />
     <Compile Include="RouteHandlers.fs" />
     <Compile Include="Router.fs" />
-    <Compile Include="Home.fs" />
+    <Compile Include="components/Home.fs" />
+    <Compile Include="components/CheckList.fs" />
+    <Compile Include="components/NewCheck.fs" />
     <Compile Include="App.fs" />
     <Compile Include="Main.fs" />
   </ItemGroup>

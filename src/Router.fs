@@ -14,7 +14,7 @@ let RouterPage =
     { new IObservable<Page> with
         override _.Subscribe(observer) =
             Router
-                .on((fun _ -> observer.OnNext Page.Root))
+                .on((fun _ -> observer.OnNext Page.Summary))
                 .on("/checklist", (RouteHandlers.onChecks >> observer.OnNext))
                 .on("/new-check", (RouteHandlers.onNewCheck >> observer.OnNext))
                 .notFound(fun (data: Match) -> observer.OnError(NotFoundExeption data))

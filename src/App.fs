@@ -6,27 +6,30 @@ open Browser.Dom
 open Types
 open Router
 open FSharp.Control
+open Components
 
 [<LitElement "mi-app">]
 let private app () =
     LitElement.init (fun cfg -> cfg.useShadowDom <- false)
     |> ignore
 
-    let page, setPage = Hook.useState Page.Root
+    let page, setPage = Hook.useState Page.Summary
 
     Hook.useEffectOnce (fun _ -> RouterPage |> Observable.add setPage)
 
     let content =
         match page with
-        | Page.Root -> html $"<h1>Home!</h1>"
-        | Page.Checks (sd, ed) -> html $"<h1>Checklist DateRange {sd}, {ed}</h1>"
-        | Page.NewCheck id -> html $"<h1>Title: {id}</h1>"
+        | Page.Summary -> html $"<mi-home>Home!</mi-home>"
+        | Page.CheckList id -> CheckList.View id
+        | Page.NewCheck title -> NewCheck.View title
 
     html
         $"""
-      <sl-button @click={fun _ -> Router.navigate ("/")}>Root</sl-button>
-      <sl-button @click={fun _ -> Router.navigate ("/checklist")}>Checklist</sl-button>
-      <sl-button @click={fun _ -> Router.navigate ("/new-check?title=peter")}>Checklist</sl-button>
+    <nav>
+        <sl-button @click={fun _ -> Router.navigate ("/")}>Resumen</sl-button>
+        <sl-button @click={fun _ -> Router.navigate ("/checklist")}>Misiones</sl-button>
+        <sl-button @click={fun _ -> Router.navigate ("/new-check?title=peter")}>Nuevas Misiones</sl-button>
+    </nav>
       {content}
     """
 
