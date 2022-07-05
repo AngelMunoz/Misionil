@@ -19,3 +19,5 @@ type Event with
     member self.targetValueAsInt =
         (self.target :?> HTMLInputElement).valueAsNumber
         |> int
+
+    member self.targetChecked = (self.target :?> HTMLInputElement).``checked``

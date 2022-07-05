@@ -25,12 +25,11 @@ let private app () =
 
     html
         $"""
-    <nav>
-        <sl-button @click={fun _ -> Router.navigate ("/")}>Resumen</sl-button>
-        <sl-button @click={fun _ -> Router.navigate ("/checklist")}>Misiones</sl-button>
-        <sl-button @click={fun _ -> Router.navigate ("/new-check?title=peter")}>Nuevas Misiones</sl-button>
-    </nav>
-      {content}
+        <nav class="print-hidden">
+            <sl-button @click={fun _ -> Router.navigate ("/")}>Resumen</sl-button>
+            <sl-button @click={fun _ -> Router.navigate ("/checklist")}>Misiones</sl-button>
+            <sl-button @click={fun _ -> Router.navigate ("/new-check?title=peter")}>Nuevas Misiones</sl-button>
+        </nav>{content}
     """
 
 let register () = ()

@@ -30,5 +30,5 @@ type MissionRecord =
        title: string
        missions: MissionRow array
        missionValue: int
-       rev: string option
+       _rev: string option
        _id: string |}

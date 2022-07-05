@@ -32,7 +32,7 @@ let private onFormSubmission (e: Event, missionValue: int) =
 
     let record: MissionRecord =
         {| _id = _id
-           rev = None
+           _rev = None
            createdAt = today
            title = title
            missions = transformedMissions
